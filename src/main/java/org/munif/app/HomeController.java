@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import services.FruitService;
+import services.Vegetable;
 import services.YellowFruitService;
 
 /**
@@ -31,6 +32,10 @@ public class HomeController {
 	@Autowired
 	@Qualifier("red")
 	private FruitService redFruitService;
+
+	@Autowired
+	@Qualifier("vegetable")
+	private Vegetable vegetable;
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
@@ -59,5 +64,13 @@ public class HomeController {
 
 		model.addAttribute("FruitList", yellowFruitService.getFuits());
 		return "Details";
+	}
+
+	@RequestMapping(value = "/Veg", method = RequestMethod.GET)
+	public String Veg(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+
+		model.addAttribute("Vegetables", vegetable.getVegetables());
+		return "Vegetables";
 	}
 }
