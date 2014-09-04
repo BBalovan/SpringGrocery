@@ -13,5 +13,9 @@
 		<qualifier value="red" />
 		<!-- inject any dependencies required by this bean -->
 	</bean>
+	<bean class="services.GreenVegService">
+		<qualifier value="vegetable" />
+		<!-- inject any dependencies required by this bean -->
+	</bean>
 </beans>
 

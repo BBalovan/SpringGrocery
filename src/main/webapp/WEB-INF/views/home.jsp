@@ -16,5 +16,7 @@
 	</ul>
 
 	<a href="Details">Yellow fruits </a>
+	<br>
+	<a href="Veg/0">Vegetables </a>
 </body>
 </html>
