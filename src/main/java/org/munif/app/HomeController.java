@@ -40,7 +40,7 @@ public class HomeController {
 
 	@Autowired
 	@Qualifier("vegetable")
-	private VegetableService vegetable;
+	private VegetableService greenVegService;
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
@@ -72,19 +72,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/Veg/{number}", method = RequestMethod.GET)
-	public String Veg(Locale locale, Model model, @PathVariable("number") int direction) {
+	public String Veg(Locale locale, Model model,
+			@PathVariable("number") int direction) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		List<String> vegs = vegetable.getVegetables();
-		
-		switch (direction) {
-		case 1:
-			Collections.sort(vegs);
-			break;
-	
-		default:
-			break;
-		}
-		model.addAttribute("VegetableList", vegs);
+		model.addAttribute("VegetableList", greenVegService.getVegetables(direction));
 		return "Vegetables";
 	}
 }
